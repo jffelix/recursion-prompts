@@ -104,16 +104,83 @@ var sum = function(array) {
 
 /*
 
+1, [2, 3], [[4]], 5
+- 4 elements in array total
 
+1 + [[2, 3], [[4]], 5]
 
+2 + [3]
+
+3
+
+2 + 3
+
+5 + [[[4]], 5]
+
+[[4]]
 
 */
 
 var arraySum = function(array) {
+
+  var resultArray = [];
+  var resultSum = 0;
+
+  if (array.length === 0) {
+    return 0;
+  }
+  if (!Array.isArray(array)) {
+    return array;
+  }
+
+  array.forEach(function(item) {
+    resultArray = resultArray.concat(arraySum(item));
+  })
+
+  resultArray.forEach(function(item) {
+    resultSum += item;
+  })
+
+  return resultSum;
+
 };
 
+
+
 // 4. Check if a number is even.
+
+/*
+
+isEven(-5)
+
+Math.abs()
+
+result: 5 - 2 - 2 = 1
+
+5 - 2
+3 - 2
+1 === 0; false
+
+base case: n <= 0
+return
+
+return result === 0
+
+*/
+
 var isEven = function(n) {
+
+  // make n absolute val
+  n = Math.abs(n);
+  // create result var
+  var result = n;
+  // if n is less than or equal to 1
+  if (result <= 1 ) {
+    return result === 0;
+  }
+
+  return isEven(result - 2);
+
 };
 
 // 5. Sum all integers below a given integer.
