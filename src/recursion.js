@@ -84,6 +84,8 @@ slice(1);
 
 */
 
+
+
 var sum = function(array) {
 
     if (array.length === 0) {
@@ -186,12 +188,109 @@ var isEven = function(n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+
+/*
+
+sumBelow(4)
+3 + 2 + 1
+
+base case: if n === 0, return
+
+4 = 4 - 1
+3 + (3)
+
+3 = 3 - 1
+2 + (2)
+
+2 = 2 - 1
+1 + (1)
+
+1 = 1 - 1
+0, return
+
+1 + 0 = 1
+2 + 1 = 3
+3 + 3 = 6
+
+  // if n equals zero
+  // subtract n by 1
+    // return 0
+  // add n by result of recursive
+
+sumBelow(-3)
+-2 + -1
+
+-3 - (-1)
+
+*/
+
 var sumBelow = function(n) {
+
+  var isNegative = false;
+  if (n < 0) {
+    isNegative = true;
+  }
+
+  n = Math.abs(n);
+
+  if (n === 0) {
+    return n;
+  }
+
+  n = n - 1;
+
+  if (isNegative) {
+    return -(n + sumBelow(n));
+  } else {
+    return n + sumBelow(n);
+  }
+
 };
+
+
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+
+/*
+
+range(1, 5)
+2, 3, 4
+
+base case: if x = y
+1 + 1
+2 + (2)
+
+2 + 1
+3 + (3)
+
+3 + 1
+4 + (4)
+
+4 + 1
+5, return 0
+
+4 + 0 = 4
+3 + 4 = 7
+7 + 2 = 9
+
+// increment x
+// if x is equal to y
+  // return 0
+// x + recursion
+
+
+x = 5, x = 7
+
+*/
+
 var range = function(x, y) {
+
+  if (y - x < 2) {
+    return [];
+  }
+
+
 };
 
 // 7. Compute the exponent of a number.
