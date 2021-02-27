@@ -255,41 +255,74 @@ var sumBelow = function(n) {
 /*
 
 range(1, 5)
-2, 3, 4
+[2, 3, 4]
 
-base case: if x = y
+base case: if y === x + 1
+
 1 + 1
-2 + (2)
+result.concat(range(2, 5))
 
 2 + 1
-3 + (3)
+result.concat(range(3, 5))
 
 3 + 1
-4 + (4)
+result.concat(range(4, 5))
 
-4 + 1
-5, return 0
+4 + 1 === 5
+return 4
 
-4 + 0 = 4
-3 + 4 = 7
-7 + 2 = 9
+result.concat(4);
+result.concat(3);
+result.concat(2);
 
+return result
+
+
+
+// create result array
+// if x is larger than y
+  // switch values
+// if no integers in range
+  // return empty array
+// if x + 1 is equal to y (base case)
+  // return x
 // increment x
-// if x is equal to y
-  // return 0
-// x + recursion
+// push x to result w/ recursion
 
+// if x is larger than y
+  // return reversed array
+// else, return array
 
-x = 5, x = 7
 
 */
 
 var range = function(x, y) {
 
+  var result = [];
+
+  var xIsLarger = false;
+  if (x > y) {
+    [x, y] = [y, x];
+    xIsLarger = true;
+  }
+
   if (y - x < 2) {
     return [];
   }
 
+  if (y === x + 1) {
+    return x;
+  }
+
+  x = x + 1;
+
+  result.push(x);
+
+  if (xIsLarger) {
+    return result.concat(range(x, y)).reverse();
+  } else {
+    return result.concat(range(x, y));
+  }
 
 };
 
@@ -298,6 +331,12 @@ var range = function(x, y) {
 // 8^2 = 8 x 8 = 64. Here, 8 is the base and 2 is the exponent.
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
+
+/*
+
+
+*/
+
 var exponent = function(base, exp) {
 };
 
@@ -305,6 +344,7 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
 var powerOfTwo = function(n) {
 };
 
