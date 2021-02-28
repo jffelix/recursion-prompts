@@ -334,10 +334,76 @@ var range = function(x, y) {
 
 /*
 
+base: when exp is zero
+
+- multiply base by itself
+- subtract 1 from exp
+
+exponent(4, 3)
+
+4 + 4 + 4 = 64
+exp 3 - 1
+1 * 4
+exp 2 - 1
+4 * 4
+exp 1 - 1
+return 4
+
+
+exponent(5, -3)
+
+1/5 * 1/5 * 1/5
+// missing two steps
+
+exp = -3
+result = 1
+result = 1 / 5
+
+exp = -2
+result = 1
+result =
+
+
+exp = -1, return 5
+
+
+
+
+// create result var
+// create exp count var
+// if exp is 0
+  // return 1
+// if exp is 1
+  // return base
+
+
 
 */
 
 var exponent = function(base, exp) {
+
+  var isNegative = false;
+  if (exp < 0) {
+    isNegative = true;
+  }
+
+  var result = 1;
+
+  if (exp === 0) {
+    return 1;
+  }
+
+  if (isNegative) {    
+    return 1 / exponent(base, exp * -1);
+    
+  } else {
+    if (exp === 1) {
+      return base;
+    }
+    result = result * base;
+    return result * (exponent(base, exp - 1));
+  }
+
 };
 
 // 8. Determine if a number is a power of two.
